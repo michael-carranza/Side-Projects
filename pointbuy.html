@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="css/pointbuy.css">
+    <link href="https://fonts.googleapis.com/css?family=Marck+Script|Merienda|Neucha|Nothing+You+Could+Do" rel="stylesheet">
+    <meta charset="UTF-8">
+    <title>Initiative Tracker</title>
+</head>
+<body>
+    <header>
+        <h1>Pathfinder Point Buy Calculator</h1>
+    </header>
+    <main>
+        <div>
+            <h2>Choose Your Fantasy Level</h2>
+            <div class="powerlevel">
+            <label for="low">
+            <input type="radio" id=low name="power_level" value="a">  Low Fantasy </label>
+            <label for="standard">
+            <input type="radio" id=standard name="power_level" value="b">  Standard Fantasy</label>
+            <label for="high"><input type="radio" id=high name="power_level" value="c">  High Fantasy</label>
+            <label for="epic">
+            <input type="radio" id=epic name="power_level" value="d">  Epic Fantasy</label>
+                <label for="custom">Custom <input type="text" id=custom name="power_level"></label>
+            <button type="submit" style="margin-left:10%">Continue</button>
+            </div>
+        </div>
+        <container id="race_choice"><br><h2>Select Race</h2>
+            <select name="race_choice">
+                <option value="human">Human (+2 to one stat)</option>
+                <option value="elf">Elf (+2 Dex, +2 Int, -2 Con)</option>
+                <option value="dwarf">Dwarf (+2 Con, +2 Wis, -2 Cha)</option>
+                <option value="halfling">Halfling (+2 Dex, +2 Cha, -2 Str)</option>
+                <option value="gnome">Gnome (+2 Con, +2 Cha, -2 Str)</option>
+                <option value="half_elf">Half Elf (+2 to one stat)</option>
+                <option value="half_orc">Half Elf (+2 to one stat)</option>
+                <option value="other">Other</option>
+            </select>
+        </container>
+        <container id= "point_tracker"><br><h2>Points Remaining</h2>
+        <input type="text" name="points_remaining" readonly="true">
+        </container>
+
+        <table>
+            <tr>
+                    <th>Ability</th>
+                    <th>Points</th>
+                    <th>Mod</th>
+                    <th>Cost</th>
+                    <th>Racial Bonus</th>
+                    <th>Final Score</th>
+                    <th>Final Mod</th>
+                </th>
+            </tr>
+             <tr>
+                <td>Strength</td>
+                <td>
+                    <select name="strength">
+                        <option value="7">7</option>
+                        <option value="7">7</option>
+                        <option value="7">7</option>
+                        <option value="7">7</option>
+                        <option value="7">7</option>
+                        <option value="7">7</option>
+                        <option value="7">7</option>
+                        <option value="7">7</option>
+                        <option value="7">7</option>
+                        <option value="7">7</option>
+                        <option value="7">7</option>
+                        <option value="7">7</option>
+                        <option value="7">7</option>
+                    </select>
+                </td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                </th>
+            </tr>
+            <tr>
+                <td>Dexterity</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                </th>
+            </tr>
+            <tr>
+                <td>Constitution</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                </th>
+            </tr>
+            <tr>
+                <td>Intelligence</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                </th>
+            </tr>
+            <tr>
+                <td>Wisdom</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                </th>
+            </tr>
+            <tr>
+                <td>Charisma</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                </th>
+            </tr>
+        </table>
+    </main>
+    <footer>
+
+    </footer>
+</body>
+</html>

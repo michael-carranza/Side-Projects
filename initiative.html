@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="css/initiative.css">
+    <link href="https://fonts.googleapis.com/css?family=Marck+Script|Merienda|Neucha|Nothing+You+Could+Do" rel="stylesheet">
+    <meta charset="UTF-8">
+    <title>Initiative Tracker</title>
+</head>
+<body>
+    <script src="js/initiative.js"></script>
+    <header>
+        <h1>Initiative Tracker</h1>
+        <div id="rollform">
+        <form>
+            <h2> Add a Combatant</h2>
+            <div id="container-topleft">
+            <span style="margin-left: 5%">Name?</span> <label id="namebox"><input type="text" style="margin-left:5%" size="15" id="name1"></label><br><br>
+            <div id="faction">
+                <label id="allyselect"><input type="radio" name="faction" value="Ally"> Ally</label><br>
+                <label id="enemyselect"><input type="radio" name="faction" value="Enemy"> Enemy</label><br>
+                <label id="neutralselect"><input type="radio" name="faction" value="Neutral" checked> Neutral</label><br><br>
+            </div>
+            <div id="init_roll">
+                <label id="rollbox"> Roll  <input type="text" style="margin-left:14%" name="roll1" size="5" id="roll1"></label><br>
+                <label id="bonusbox"> Bonus <input type="text" size="5" name="bonus1" id="bonus1"></label><br>
+                <label id="totalbox"> Total <input type="text" style="margin-left:6.75%" size="5" name="rolltotal" id="rolltotal" readonly></label><br>
+            </div></div><br><br><br>
+            <label id="rollbutton"><input type="button" style="margin-left:auto; margin-top:5%; margin-right:auto; width:6em; clear:both;"  name="add_combatant" value="Add" onclick="calcSum();write_name();"></label>
+            </form>
+        <div id=counters>
+            <form id="top-mid">
+                <h2> Track an Effect</h2>
+                Duration: <input type="text" style="margin-bottom: 5%" name="num1"><br>
+                <input type="radio" name="dur_unit" value="turns" checked> Turns
+                <input type="radio" name="dur_unit" value="rounds"> Rounds
+                <input type="radio" name="dur_unit" value="minutes"> Minutes<br><br>
+                Effect: <input type="text" style="margin-left: 6%" name="num2"><br><br>
+                <input type="button" style="margin-left:5%; width:6em;" name="add_counter" value="Add" onclick="add_counter();">
+            </form>
+        </div></div>
+    </header>
+    <main>
+        <table>
+            <tr class="column_labels">
+                <th class="outside"></th>
+                <th class="name">Name</th>
+                <th class="total">Total</th>
+                <th class="roll">Roll</th>
+                <th class="bonus">Bonus</th>
+                <th class="ready">Ready</th>
+                <th class="delay">Delay</th>
+                <th class="counters">Counters</th>
+                <th class="dead">Dead</th>
+            </tr>
+            <tr class="first">
+                <td class="outside"><img class=arrow src="img/up.png"><img class=arrow src="img/down.png"></td>
+                <td class="name" id=name1box></td>
+                <td class="total" name="total1box" id=total1box></td>
+                <td class="roll" id=roll1box></td>
+                <td class="bonus" id=bonus1box></td>
+                <td class="ready"><input type="checkbox" name="ready" value="ready"></td>
+                <td class="delay"><input type="checkbox" name="delay" value="delay"></td>
+                <td class="counters" id=counters1box>None</td>
+                <td class="dead"><button name="dead" type="button" onclick="clear1();">Remove</button></td>
+            </tr>
+            <tr class="second">
+                <td class="outside"><img class=arrow src="img/up.png"><img class=arrow src="img/down.png"></td>
+                <td class="name" id=name2box></td>
+                <td class="total" name="total2box" id=total2box></td>
+                <td class="roll" id=roll2box></td>
+                <td class="bonus" id=bonus2box></td>
+                <td class="ready"><input type="checkbox" name="ready" value="ready"></td>
+                <td class="delay"><input type="checkbox" name="delay" value="delay"></td>
+                <td class="counters" id=counters2box>None</td>
+                <td class="dead"><button name="dead" type="button" onclick="clear2();">Remove</button></td>
+            </tr>
+            <tr class="third">
+                <td class="outside"><img class=arrow src="img/up.png"><img class=arrow src="img/down.png"></td>
+                <td class="name" id=name3box></td>
+                <td class="total" name="total3box" id=total3box></td>
+                <td class="roll" id=roll3box></td>
+                <td class="bonus" id=bonus3box></td>
+                <td class="ready"><input type="checkbox" name="ready" value="ready"></td>
+                <td class="delay"><input type="checkbox" name="delay" value="delay"></td>
+                <td class="counters" id=counters3box>None</td>
+                <td class="dead"><button name="dead" type="button" onclick="clear3();">Remove</button></td>
+            </tr>
+            <tr class="fourth">
+                <td class="outside"><img class=arrow src="img/up.png"><img class=arrow src="img/down.png"></td>
+                <td class="name" id=name4box></td>
+                <td class="total" name="total4box" id=total4box></td>
+                <td class="roll" id=roll4box></td>
+                <td class="bonus" id=bonus4box></td>
+                <td class="ready"><input type="checkbox" name="ready" value="ready"></td>
+                <td class="delay"><input type="checkbox" name="delay" value="delay"></td>
+                <td class="counters" id=counters4box>None</td>
+                <td class="dead"><button name="dead" type="button" onclick="clear4();">Remove</button></td>
+            </tr>
+            <tr class="fifth">
+                <td class="outside"><img class=arrow src="img/up.png"><img class=arrow src="img/down.png"></td>
+                <td class="name" id=name5box></td>
+                <td class="total" name="total5box" id=total5box></td>
+                <td class="roll" id=roll5box></td>
+                <td class="bonus" id=bonus5box></td>
+                <td class="ready"><input type="checkbox" name="ready" value="ready"></td>
+                <td class="delay"><input type="checkbox" name="delay" value="delay"></td>
+                <td class="counters" id=counters5box>None</td>
+                <td class="dead"><button name="dead" type="button" onclick="clear5();">Remove</button></td>
+            </tr>
+            <tr class="sixth">
+                <td class="outside"><img class=arrow src="img/up.png"><img class=arrow src="img/down.png"></td>
+                <td class="name" id=name6box></td>
+                <td class="total" name="total6box" id=total6box></td>
+                <td class="roll" id=roll6box></td>
+                <td class="bonus" id=bonus6box></td>
+                <td class="ready"><input type="checkbox" name="ready" value="ready"></td>
+                <td class="delay"><input type="checkbox" name="delay" value="delay"></td>
+                <td class="counters" id=counters6box>None</td>
+                <td class="dead"><button name="dead" type="button" onclick="clear6();">Remove</button></td>
+            </tr>
+            <tr class="seventh">
+                <td class="outside"><img class=arrow src="img/up.png"><img class=arrow src="img/down.png"></td>
+                <td class="name" id=name7box></td>
+                <td class="total" name="total7box" id=total7box></td>
+                <td class="roll" id=roll7box></td>
+                <td class="bonus" id=bonus7box></td>
+                <td class="ready"><input type="checkbox" name="ready" value="ready"></td>
+                <td class="delay"><input type="checkbox" name="delay" value="delay"></td>
+                <td class="counters" id=counters7box>None</td>
+                <td class="dead"><button name="dead" type="button" onclick="clear7();">Remove</button></td>
+            </tr>
+            <tr class="eighth">
+                <td class="outside"><img class=arrow src="img/up.png"><img class=arrow src="img/down.png"></td>
+                <td class="name" id=name8box></td>
+                <td class="total" name="total8box" id=total8box></td>
+                <td class="roll" id=roll8box></td>
+                <td class="bonus" id=bonus8box></td>
+                <td class="ready"><input type="checkbox" name="ready" value="ready"></td>
+                <td class="delay"><input type="checkbox" name="delay" value="delay"></td>
+                <td class="counters" id=counters8box>None</td>
+                <td class="dead"><button name="dead" type="button" onclick="clear8();">Remove</button></td>
+            </tr>
+            <tr class="ninth">
+                <td class="outside"><img class=arrow src="img/up.png"><img class=arrow src="img/down.png"></td>
+                <td class="name" id=name9box></td>
+                <td class="total" name="total9box" id=total9box></td>
+                <td class="roll" id=roll9box></td>
+                <td class="bonus" id=bonus9box></td>
+                <td class="ready"><input type="checkbox" name="ready" value="ready"></td>
+                <td class="delay"><input type="checkbox" name="delay" value="delay"></td>
+                <td class="counters" id=counters9box>None</td>
+                <td class="dead"><button name="dead" type="button" onclick="clear9();">Remove</button></td>
+            </tr>
+            <tr class="tenth">
+                <td class="outside"><img class=arrow src="img/up.png"><img class=arrow src="img/down.png"></td>
+                <td class="name" id=name10box></td>
+                <td class="total" name="total10box" id=total10box></td>
+                <td class="roll" id=roll10box></td>
+                <td class="bonus" id=bonus10box></td>
+                <td class="ready"><input type="checkbox" name="ready" value="ready"></td>
+                <td class="delay"><input type="checkbox" name="delay" value="delay"></td>
+                <td class="counters" id=counters10box>None</td>
+                <td class="dead"><button name="dead" type="button" onclick="clear10();">Remove</button></td>
+            </tr>
+            <tr class="eleventh">
+                <td class="outside"><img class=arrow src="img/up.png"><img class=arrow src="img/down.png"></td>
+                <td class="name" id=name11box></td>
+                <td class="total" name="total11box" id=total11box></td>
+                <td class="roll" id=roll11box></td>
+                <td class="bonus" id=bonus11box></td>
+                <td class="ready"><input type="checkbox" name="ready" value="ready"></td>
+                <td class="delay"><input type="checkbox" name="delay" value="delay"></td>
+                <td class="counters" id=counters11box>None</td>
+                <td class="dead"><button name="dead" type="button" onclick="clear11();">Remove</button></td>
+            </tr>
+            <tr class="twelfth">
+                <td class="outside"><img class=arrow src="img/up.png"><img class=arrow src="img/down.png"></td>
+                <td class="name" id=name12box></td>
+                <td class="total" name="total12box" id=total12box></td>
+                <td class="roll" id=roll12box></td>
+                <td class="bonus" id=bonus12box></td>
+                <td class="ready"><input type="checkbox" name="ready" value="ready"></td>
+                <td class="delay"><input type="checkbox" name="delay" value="delay"></td>
+                <td class="counters" id=counters12box>None</td>
+                <td class="dead"><button name="dead" type="button" onclick="clear12();">Remove</button></td>
+            </tr>
+        </table>
+    </main>
+    <footer>
+        <div id="tool_bar">
+            <ul>
+                <li><button name="next_turn" onclick="next_turn()">Next Turn</button></li>
+                <li><button name="prev_turn" onclick="prev_turn()">Previous Turn</button></li>
+                <li><button name="add_combatant" onclick="add_combatant()">Add Combatant</button></li>
+                <li><button name="add_counter" onclick="add_counter()">Add Counter</button></li>
+            </ul>
+        </div>
+    </footer>
+</body>
+</html>
