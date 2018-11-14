@@ -11,26 +11,26 @@
     <header>
         <h1>Initiative Tracker</h1>
         <div id="rollform">
-        <form>
-            <h2> Add a Combatant</h2>
+            <form id="top-left" style="height:11.70em">
             <div id="container-topleft">
-            <span style="margin-left: 5%">Name?</span> <label id="namebox"><input type="text" style="margin-left:5%" size="15" id="name1"></label><br><br>
+                <h2> Add a Combatant</h2>
+                <span style="margin-left: 5%;">Name?</span><input type="text" style="margin-left:5%; margin-bottom:1em" size="15" id="name1"></label><br>
             <div id="faction">
                 <label id="allyselect"><input type="radio" name="faction" value="Ally"> Ally</label><br>
                 <label id="enemyselect"><input type="radio" name="faction" value="Enemy"> Enemy</label><br>
                 <label id="neutralselect"><input type="radio" name="faction" value="Neutral" checked> Neutral</label><br><br>
             </div>
             <div id="init_roll">
-                <label id="rollbox"> Roll  <input type="text" style="margin-left:14%" name="roll1" size="5" id="roll1"></label><br>
+                <label id="rollbox"> Roll  <input type="text" style="margin-left:12%" name="roll1" size="5" id="roll1"></label><br>
                 <label id="bonusbox"> Bonus <input type="text" size="5" name="bonus1" id="bonus1"></label><br>
-                <label id="totalbox"> Total <input type="text" style="margin-left:6.75%" size="5" name="rolltotal" id="rolltotal" readonly></label><br>
+                <label id="totalbox"> Total <input type="text" style="margin-left:6%" size="5" name="rolltotal" id="rolltotal" readonly></label><br>
             </div></div><br><br><br>
-            <label id="rollbutton"><input type="button" style="margin-left:auto; margin-top:5%; margin-right:auto; width:6em; clear:both;"  name="add_combatant" value="Add" onclick="calcSum();write_name();"></label>
+            <label id="rollbutton"><input type="button" style="margin-left:auto; margin-top:1em ; margin-right:auto; width:5em; clear:both;"  name="add_combatant" value="Add" onclick="calcSum();write_name();"></label>
             </form>
         <div id=counters>
-            <form id="top-mid">
+            <form id="top-mid" style="height:11.70em">
                 <h2> Track an Effect</h2>
-                Duration: <input type="text" style="margin-bottom: 5%" name="num1"><br>
+                Duration: <input type="text" name="num1"><br>
                 <input type="radio" name="dur_unit" value="turns" checked> Turns
                 <input type="radio" name="dur_unit" value="rounds"> Rounds
                 <input type="radio" name="dur_unit" value="minutes"> Minutes<br><br>
@@ -40,7 +40,7 @@
         </div></div>
     </header>
     <main>
-        <table>
+        <table id="initiative-table">
             <tr class="column_labels">
                 <th class="outside"></th>
                 <th class="name">Name</th>
@@ -53,7 +53,7 @@
                 <th class="dead">Dead</th>
             </tr>
             <tr class="first">
-                <td class="outside"><img class=arrow src="img/up.png"><img class=arrow src="img/down.png"></td>
+                <td class="outside"><button onclick="upNdown('up');">&ShortUpArrow;</button><button onclick="upNdown('down');">&ShortDownArrow;</button></td>
                 <td class="name" id=name1box></td>
                 <td class="total" name="total1box" id=total1box></td>
                 <td class="roll" id=roll1box></td>
